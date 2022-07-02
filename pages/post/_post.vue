@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Header />
         <div class="posts">
                 <div class="post">
                     <h1>{{post.title}}</h1>
@@ -10,7 +11,7 @@
                 </div> 
                 <div class="coments">
                     <div v-if="showFiveComents">
-                        <div v-for="(coment, index) in coments" :key="coment">
+                        <div v-for="(coment, index) in coments" :key="coment.id">
                             <div class="coment" v-show="index < 5">
                                 <p>{{coment.name}}</p>
                                 <p>{{coment.email}}</p>
@@ -19,7 +20,7 @@
                         </div>
                     </div>
                     <div v-if="!showFiveComents">
-                        <div v-for="(coment, index) in coments" :key="coment">
+                        <div v-for="coment in coments" :key="coment">
                             <div class="coment">
                                 <p>{{coment.name}}</p>
                                 <p>{{coment.email}}</p>
@@ -34,8 +35,9 @@
 
 <script>
 import axios from 'axios'
+import Header from '../Header.vue'
 export default {
-
+    components: {Header},
     data(){
         return{
             urlPosts: 'https://jsonplaceholder.typicode.com/posts/' + this.$route.params.post,

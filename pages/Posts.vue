@@ -31,6 +31,7 @@ export default {
             userName:'',
         }
     },
+
     mounted(){
         this.getData();
         this.getUsers();

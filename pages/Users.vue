@@ -1,23 +1,25 @@
 <template>
     <div>
         <Header />
-        <h1>Here go users</h1>
         <div class="users">
             <div class="user" v-for="user in users" :key="user.userId">
-                <h1>{{user.id}}</h1>
-                <h1>{{user.name}}</h1>
-                <h3>{{user.username}}</h3>
-                <p>{{user.email}}</p>
-                <p>{{user.address.street}}</p>
-                <p>{{user.address.suite}}</p>
-                <p>{{user.address.city}}</p>
-                <p>{{user.address.zipcode}}</p>
-                <p>{{user.address.geo.lat}}{{user.address.geo.lng}}</p> 
-                <ul>
-                    <li v-for="userPost in getPostlistByUserId(user.id)" :key="userPost.id">
-                        {{userPost.title}}
-                    </li>
-                </ul>
+                <div>
+                    <h1>{{user.name}}</h1>
+                    <h3>{{user.username}}</h3>
+                    <p>{{user.email}}</p>
+                    <p>{{user.address.street}}</p>
+                    <p>{{user.address.suite}}</p>
+                    <p>{{user.address.city}}</p>
+                    <p>{{user.address.zipcode}}</p>
+                    <p>{{user.address.geo.lat}}{{user.address.geo.lng}}</p> 
+                </div>
+                <div>
+                    <ul>
+                        <li v-for="userPost in getPostlistByUserId(user.id)" :key="userPost.id">
+                            {{userPost.title}}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -69,5 +71,15 @@ export default {
 
 
 <style>
-
+.users {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.user{
+    margin: 1rem auto;
+    padding: 1rem;
+    background: rgba(214, 213, 213, 0.603);
+    border: 1px solid rgba(41, 170, 225, 0.548);
+}
 </style>
